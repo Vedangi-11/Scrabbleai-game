@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { font-family: Inter, sans-serif; }
+.board { width: 480px; display: grid; grid-template-columns: repeat(15, 1fr); gap: 2px; }
+.grid-cols-15 { grid-template-columns: repeat(15, minmax(0,1fr)); }
+
+.multiplier {
+  font-size: 9px;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  opacity: 0.8;
+}
+
+.invalid {
+  outline: 2px solid rgba(220,20,60,0.6);
+}
