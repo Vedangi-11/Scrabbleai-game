@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setGame, updateGame, endGame } from "../../redux/gameSlice";
-import Board from "../components/Board";
-import AIRack from "../components/aiRack";
-import Controls from "../components/Controls";
-import EndGameButton from "@/components/EndGame";
+import { setGame, updateGame, endGame } from "../../redux/gameSlice.js";
+import Board from "../components/Board.jsx";
+import AIRack from "../components/aiRack.jsx";
+import Controls from "../components/Controls.jsx";
+import EndGameButton from "@/components/EndGame.jsx";
 import { motion } from "framer-motion";
 export default function Home() {
   const dispatch = useDispatch();

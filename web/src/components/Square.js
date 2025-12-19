@@ -1,9 +1,9 @@
 "use client";
 import { useDrop, useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
-import { addPlacement, removePlacement } from "../../redux/gameSlice";
+import { addPlacement, removePlacement } from "../../redux/gameSlice.js";
 import { motion } from "framer-motion";
-import { MULTIPLIERS } from "../../data/clientMultipliers";
+import { MULTIPLIERS } from "../../data/clientMultipliers.js";
 import { useRef } from "react";
 
 export default function Square({ row, col, letter }) {

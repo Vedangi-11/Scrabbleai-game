@@ -1,7 +1,6 @@
-// frontend/components/Board.jsx
 "use client";
 import { useSelector } from "react-redux";
-import Square from "./Square";
+import Square from "./Square.js";
 
 export default function Board() {
   const game = useSelector(s => s.game.current);

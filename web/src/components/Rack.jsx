@@ -1,7 +1,7 @@
 "use client";
 import { useSelector, useDispatch } from "react-redux";
 import { useDrop, useDrag } from "react-dnd";
-import { removePlacement } from "../../redux/gameSlice";
+import { removePlacement } from "../../redux/gameSlice.js";
 
 export default function Rack({ selected = [], onToggleSelect }) {
  const game = useSelector(s => s.game.current);

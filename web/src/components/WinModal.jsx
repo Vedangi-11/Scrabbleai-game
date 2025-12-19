@@ -1,6 +1,6 @@
 "use client";
 import { useDispatch } from "react-redux";
-import { endGame } from "../redux/gameSlice";
+import { endGame } from "../redux/gameSlice.js";
 import { motion } from "framer-motion";
 
 export default function WinModal({ status }) {

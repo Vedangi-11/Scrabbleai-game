@@ -1,9 +1,9 @@
 "use client";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { updateGame,clearPlacements,setAIThinking} from "../../redux/gameSlice";
+import { updateGame,clearPlacements,setAIThinking} from "../../redux/gameSlice.js";
 import { useEffect, useState } from "react";
-import Rack from "./Rack";
+import Rack from "./Rack.jsx";
 
 export default function Controls() {
   const game = useSelector(s => s.game.current);

@@ -1,6 +1,6 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
-import { endGame } from "../../redux/gameSlice";
+import { endGame } from "../../redux/gameSlice.js";
 
 export default function EndGameButton({ className = "" }) {
   const dispatch = useDispatch();
