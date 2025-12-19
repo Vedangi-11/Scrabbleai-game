@@ -14,7 +14,7 @@ export default function Controls() {
   const dispatch = useDispatch();
   const [playerLoading, setPlayerLoading] = useState(false);
   const [selectedForExchange, setSelectedForExchange] = useState([]);
-
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL;
   const isFirst =
     game &&
     game.playerScore === 0 &&
@@ -23,7 +23,7 @@ export default function Controls() {
 
   useEffect(() => {
     if (!game || pending.length === 0) return;
-    axios.post("http://localhost:5000/api/game/validate", {
+    axios.post(`${API_BASE}/api/game/validate`, {
       gameId: game._id,
       placements: pending,
       isFirstMove: isFirst
@@ -41,7 +41,7 @@ export default function Controls() {
     dispatch(setAIThinking(false)); 
     try {
       const commit = await axios.post(
-        "http://localhost:5000/api/game/player-move",
+        `${API_BASE}/api/game/player-move`,
         { gameId: game._id, placements: pending }
       );
       dispatch(updateGame(commit.data));
@@ -49,7 +49,7 @@ export default function Controls() {
       setPlayerLoading(false);
       dispatch(setAIThinking(true));
       const ai = await axios.post(
-        `http://localhost:5000/api/game/ai-move/${game._id}`
+        `${API_BASE}/api/game/ai-move/${game._id}`
       );
       dispatch(updateGame(ai.data.game)); 
     } catch (err) {
@@ -62,7 +62,7 @@ export default function Controls() {
   async function passTurn() {
     const id = game._id;
     try {
-      const res = await axios.post(`http://localhost:5000/api/game/pass/${id}`);
+      const res = await axios.post(`${API_BASE}/api/game/pass/${id}`);
       dispatch(updateGame(res.data));
     }
     catch (err) {
@@ -76,7 +76,7 @@ export default function Controls() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:5000/api/game/exchange", {
+      const res = await fetch(`${API_BASE}/api/game/exchange`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ export default function Controls() {
       setShowExchangeModal(false);
       dispatch(setAIThinking(true));
       const ai = await axios.post(
-        `http://localhost:5000/api/game/ai-move/${data._id}`
+        `${API_BASE}/api/game/ai-move/${data._id}`
       );
       dispatch(updateGame(ai.data.game));
       dispatch(setAIThinking(false));

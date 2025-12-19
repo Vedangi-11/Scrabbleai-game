@@ -17,7 +17,7 @@ export default function Home() {
   const floatingTiles = ["S", "C", "R", "A", "B", "B", "L", "E", "A", "I"];
   const [showBag, setShowBag] = useState(false);
   const [bagCounts, setBagCounts] = useState({});
-
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL;
   function computeBagCounts(bagArray) {
     const counts = {};
     for (const tile of bagArray) {
@@ -28,7 +28,7 @@ export default function Home() {
 
   async function startGame() {
     setLoading(true);
-    const res = await axios.post("http://localhost:5000/api/game/create");
+    const res = await axios.post(`${API_BASE}/api/game/create`);
 
     const counts = computeBagCounts(res.data.tileBag);
     setBagCounts(counts);
@@ -40,7 +40,7 @@ export default function Home() {
   async function refresh() {
     if (!game?._id) return;
     try {
-      const res = await axios.get(`http://localhost:5000/api/game/${game._id}`);
+      const res = await axios.get(`${API_BASE}/api/game/${game._id}`);
       const counts = computeBagCounts(res.data.tileBag);
       setBagCounts(counts);
       dispatch(updateGame(res.data));

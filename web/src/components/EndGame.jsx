@@ -6,13 +6,13 @@ export default function EndGameButton({ className = "" }) {
   const dispatch = useDispatch();
   const game = useSelector(s => s.game.current);
   if (!game?._id) return null;
-
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL;
   const handleEndGame = async () => {
     const confirmEnd = window.confirm("Are you sure you want to end this game?");
     if (!confirmEnd) return;
     try {
       const res = await fetch(
-        `http://localhost:5000/api/game/${game._id}`,
+        `${API_BASE}/api/game/${game._id}`,
         { method: "DELETE" }
       );
       if (!res.ok) {
